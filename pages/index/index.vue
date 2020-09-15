@@ -19,10 +19,11 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.container {
 		padding: 20px;
 		font-size: 14px;
 		line-height: 24px;
+		color: $uni-color-primary;
 	}
 </style>
