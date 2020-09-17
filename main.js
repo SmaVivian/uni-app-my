@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App'
+import request from '@/common/js/request'
+
+Vue.prototype.$http = request
 
 Vue.config.productionTip = false
 
