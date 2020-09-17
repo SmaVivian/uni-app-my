@@ -1,4 +1,12 @@
+// #ifdef H5
+const baseUrl = '/admin'   
+// #endif
+
+// #ifndef H5
 const baseUrl = 'http://bjmuseum.org.cn/admin'   
+// #endif
+// MP-WEIXIN 微信端
+
 const request = {
 	base: config => {
 		return new Promise((resolve, reject) => {

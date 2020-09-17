@@ -20,6 +20,7 @@
 </template>
 
 <script>
+	import { mapState, mapMutations } from 'vuex'
 	export default {
 		data() {
 			return {
@@ -37,8 +38,17 @@
 				dataList: [],
 			}
 		},
+		computed: {
+			...mapState(['hasLogin'])
+		},
 		onLoad() {
-			this.getList()
+			// // console.log('aaaaaaa', uni.getStorageSync('userInfo') )
+			if(!this.hasLogin) {
+				this.tologin()
+			} else {
+				this.getList()
+			}
+			// this.getList()
 		},
 		onPullDownRefresh() {
 			this.dataList = []
@@ -52,6 +62,21 @@
 			this.getList();
 		},
 		methods: {
+			...mapMutations(['login']),
+			tologin() {
+				this.$store
+					.dispatch('loginWechatAuth', '2345')
+					.then((res) => {
+						this.getList()
+					})
+					.catch(msg => {
+						uni.showToast({
+							title: msg,
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+			},
 			getList() {
 				this.$http.get('/AppointOrder/museumList.do', {
 					type: this.activeTab, //排序类型(1-默认排序 2-距离最近 3-预约量)
