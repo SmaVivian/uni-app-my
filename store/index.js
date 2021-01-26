@@ -44,23 +44,29 @@ const store = new Vuex.Store({
 							let code = res.code
 							console.warn('如需获取openid请参考uni-id: https://uniapp.dcloud.net.cn/uniCloud/uni-id')
 							
-							this._vm.$http.get('/wx/wxIsLogin.do', {
-								key: code
-							})
-							.then(res => {
-								// todo 判断登录成功
-								// if (res.success === 1) {
-								if (res.success === 0) {
-									res.data = {userId: '34545', name: 'vivi'}
-									commit('login', res.data)
+							// todo dele
+							res.data = {userId: '34545', name: 'vivi'}
+							commit('login', res.data)
+							resolve(res.data)
+							
+							// todo open
+							// this._vm.$http.get('/wx/wxIsLogin.do', {
+							// 	key: code
+							// })
+							// .then(res => {
+							// 	// todo 判断登录成功
+							// 	// if (res.success === 1) {
+							// 	if (res.success === 0) {
+							// 		res.data = {userId: '34545', name: 'vivi'}
+							// 		commit('login', res.data)
 									
-									resolve(res.data)
-								} else {
-									reject(res.error.message)
-								}
-							})
+							// 		resolve(res.data)
+							// 	} else {
+							// 		reject(res.error.message)
+							// 	}
+							// })
 							
-							
+							// todo dele
 							// 获取用户信息
 							// uni.getUserInfo({
 							// 	provider: 'weixin',
@@ -81,36 +87,42 @@ const store = new Vuex.Store({
 			// #ifdef H5
 			return await new Promise((resolve, reject) => {
 				console.log(888, getQueryString('islogin'))
-				if (state.hasLogin) {
-					resolve()
-				} else if(getQueryString('islogin')){
-					this._vm.$http.get('/wx/wxIsLogin.do', {
-						key: getQueryString('islogin')
-					})
-					.then(res => {
-						// todo 判断登录成功
-						// if (res.success === 1) {
-						if (res.success === 0) {
-							res.data = {userId: '34545', name: 'vivi'}
-							commit('login', res.data)
+				// todo dele
+				res.data = {userId: '34545', name: 'vivi'}
+				commit('login', res.data)
+				resolve(res.data)
+				
+				// todo open
+				// if (state.hasLogin) {
+				// 	resolve()
+				// } else if(getQueryString('islogin')){
+				// 	this._vm.$http.get('/wx/wxIsLogin.do', {
+				// 		key: getQueryString('islogin')
+				// 	})
+				// 	.then(res => {
+				// 		// todo 判断登录成功
+				// 		// if (res.success === 1) {
+				// 		if (res.success === 0) {
+				// 			res.data = {userId: '34545', name: 'vivi'}
+				// 			commit('login', res.data)
 							
-							resolve(res.data)
-						} else {
-							reject(res.error.message)
-						}
-					})
-				} else {
-					// todo 回调地址
-					window.location.href =
-						apiUrl +
-						'/admin/wx/m/wxLogin.do?redirect_uri=' + encodeURIComponent(window.location.href)
-					// window.location.href =
-					// 	apiUrl +
-					// 	'/admin/wx/m/wxLogin.do?redirect_uri=' +
-					// 	encodeURIComponent(
-					// 		apiUrl + '/appoint/#/home/order-pre?id=' + this.$route.query.id
-					// 	)
-				}
+				// 			resolve(res.data)
+				// 		} else {
+				// 			reject(res.error.message)
+				// 		}
+				// 	})
+				// } else {
+				// 	// todo 回调地址
+				// 	window.location.href =
+				// 		apiUrl +
+				// 		'/admin/wx/m/wxLogin.do?redirect_uri=' + encodeURIComponent(window.location.href)
+				// 	// window.location.href =
+				// 	// 	apiUrl +
+				// 	// 	'/admin/wx/m/wxLogin.do?redirect_uri=' +
+				// 	// 	encodeURIComponent(
+				// 	// 		apiUrl + '/appoint/#/home/order-pre?id=' + this.$route.query.id
+				// 	// 	)
+				// }
 			})  
 			// #endif
 		},

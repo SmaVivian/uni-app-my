@@ -1,9 +1,11 @@
 // #ifdef H5
-const baseUrl = '/admin'   
+// const baseUrl = '/admin'   
+const baseUrl = '/api'   
 // #endif
 
 // #ifndef H5
-const baseUrl = 'http://bjmuseum.org.cn/admin'   
+// const baseUrl = 'http://bjmuseum.org.cn/admin'   
+const baseUrl = 'https://unidemo.dcloud.net.cn/api'   
 // #endif
 // MP-WEIXIN 微信端
 
