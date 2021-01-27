@@ -88,9 +88,9 @@ const store = new Vuex.Store({
 			return await new Promise((resolve, reject) => {
 				console.log(888, getQueryString('islogin'))
 				// todo dele
-				res.data = {userId: '34545', name: 'vivi'}
-				commit('login', res.data)
-				resolve(res.data)
+				let data = {userId: '34545', name: 'vivi'}
+				commit('login', data)
+				resolve(data)
 				
 				// todo open
 				// if (state.hasLogin) {
